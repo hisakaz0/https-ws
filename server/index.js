@@ -1,5 +1,6 @@
 
 const WebSocket = require('ws');
+const express = require('express');
 
 const wss = new WebSocket.Server({
   port: 8080,
@@ -31,5 +32,15 @@ wss.on('connection', (ws) => {
 
   ws.send('This is server');
 });
+
+const app = express();
+app.get('/', (req, res) => {
+  Array.from(wss.clients).forEach(ws => {
+    ws.send("Access from http");
+  });
+  res.send({ res: 'ok' });
+});
+
+app.listen(8081, () => console.log("express is started"));
 
 console.log("Info: start server");

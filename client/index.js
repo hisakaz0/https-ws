@@ -11,7 +11,7 @@ ws.on('open', () => {
 });
 
 ws.on('message', (data) => {
-  console.log(data);
+  console.log(`recieved data: ${data}`);
 });
 
 console.log("Info: start client");
