@@ -2,7 +2,7 @@
 
 const WebSocket = require('ws');
 
-const ws = new WebSocket('ws://localhost:8080/', {
+const ws = new WebSocket('ws://localhost:10443/', {
   perMessageDeflate: false
 });
 
